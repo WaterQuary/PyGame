@@ -13,7 +13,7 @@
   &nbsp;&nbsp;&nbsp;
   <img src="picturesForReadME/2picture.jpg" alt="Zhestkoe_photo" width="250" />
   &nbsp;&nbsp;&nbsp;
-  <img src="picturesForReadME/3picture.jpg" alt="Zhestkoe_photo" width="250" />
+  <img src="picturesForReadME/3picture.png" alt="Zhestkoe_photo" width="250" />
 </p>
 
 <hr>
@@ -29,6 +29,6 @@
 
 <p align="center">
   <kbd>
-    <img src="gif1.gif" width="100%" alt="WaterQuary">
+    <img src="picturesForReadME/gif1.gif" width="700" alt="WaterQuary">
   </kbd>
 </p>
