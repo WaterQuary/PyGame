@@ -1,9 +1,5 @@
 <p align="center">
-  <span style="font-size: 2em; font-weight: bold;">
-    <span style="color: #ffffff;">Это самая </span>
-    <span style="color: #007acc;">жеская игра</span>
-    <span style="color: #ff4500;"> на питоне</span>
-  </span>
+  <sub>$${\color{white}Это \space самая \space \color{#007acc}жеская \space игра \space \color{#ff4500}на \space питоне}$$</sub>
 </p>
 
 <hr>
