@@ -9,11 +9,11 @@
 <hr>
 
 <p align="center">
-  <img src="picturesForReadME/1picture.jpg" alt="Zhestkoe_photo" style="height: 250px; max-width: 30%; object-fit: cover;" />
+  <img src="picturesForReadME/1picture.jpg" alt="Zhestkoe_photo" style="height: 400px; max-width: 30%; object-fit: cover;" />
   &nbsp;&nbsp;
-  <img src="picturesForReadME/2picture.jpg" alt="Zhestkoe_photo" style="height: 250px; max-width: 30%; object-fit: cover;" />
+  <img src="picturesForReadME/2picture.jpg" alt="Zhestkoe_photo" style="height: 400px; max-width: 30%; object-fit: cover;" />
   &nbsp;&nbsp;
-  <img src="picturesForReadME/3picture.jpg" alt="Zhestkoe_photo" style="height: 250px; max-width: 30%; object-fit: cover;" />
+  <img src="picturesForReadME/3picture.png" alt="Zhestkoe_photo" style="height: 400px; max-width: 30%; object-fit: cover;" />
 </p>
 
 <hr>
