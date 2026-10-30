@@ -1,3 +1,1 @@
-Python 3.10+
-pip
-PyGame
+pygame

@@ -1,6 +1,7 @@
 import pygame as pg
-from main import Game
+from Game.Game1 import Game
 pg.init()
+
 
 class GameMenu():
     def __init__(self):
@@ -19,7 +20,6 @@ class GameMenu():
                 result = "игра"
             elif self.current_choose == 1:
                 result = "выход"
-            print(result)
             return result
         return None
 
@@ -77,7 +77,4 @@ class Show():
             else:
                 self.screen.print_menu()
             pg.display.flip()
-
-start = Show()
-start.show_in_game()
 pg.quit()
