@@ -1,3 +1,4 @@
+#Это скрипт для начала игры
 from Game.GameMenu import Show
 from LoadingFuncBRO import run_loading_bar
 import time
