@@ -1,10 +1,9 @@
 #Это скрипт для начала игры
-from Game.GameMenu import Show
-from LoadingFuncBRO import run_loading_bar
-import time
-import pygame as pg
-pg.init()
+from Scripts_utilites_for_game.LoadingFuncBRO import run_loading_bar
 
+import subprocess
+import sys
+import time
 class StartGame():
     def __init__(self):
         self.isInstalled = False
@@ -30,7 +29,7 @@ class StartGame():
             return"Библиотека не найдена: " + libs
 
     def check_access(self):
-        if False in self.isInstalled_mass:
+        if "False" in self.isInstalled_mass:
             return "непрошли"
         else:
             print("\n===УСПЕШНО===\nНачинаем загрузку в игру...\n")
@@ -51,9 +50,13 @@ class StartGame():
         
         if finally_access == "прошли":
             run_loading_bar()
-            Show().show_in_game()
-
-
+            from Scripts_utilites_for_game.init_game import start_games
+            start_games()
+            
+        if finally_access == "непрошли":
+            print("ВЫ чмо, поэтому скачиваем\n")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "pygame"])
+            from Scripts_utilites_for_game.init_game import start_games
+            start_games()
 start = StartGame()
-start.Launch_Game()
-pg.quit()
+start.Launch_Game()   
