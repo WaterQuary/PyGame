@@ -1,5 +1,5 @@
 import pygame as pg
-from Game.Game1 import Game
+from .GameMenu_ChooseGame import ShowGameMenuChoose
 pg.init()
 
 
@@ -72,7 +72,7 @@ class Show():
                         self.run = False
             self.screen.play_screen.fill(self.screen.background_color)
             if self.isGame:
-                Game().start_game()
+                ShowGameMenuChoose().GameMenuChoose_show_in_game()
                 return
             else:
                 self.screen.print_menu()

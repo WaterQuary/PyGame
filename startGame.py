@@ -59,4 +59,4 @@ class StartGame():
             from Scripts_utilites_for_game.init_game import start_games
             start_games()
 start = StartGame()
-start.Launch_Game()   
+start.Launch_Game()
