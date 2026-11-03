@@ -1,14 +1,25 @@
-chooses = ["<= Лево", "Право =>"]
-width = 800
-for i in range(len(chooses)):
-    part_i = ((-1)**(i+1)) * 200
-    part_width = (width//2)
-    pos_x = part_i + part_width
-    print("part width: ", part_width, end = "    ")
-    print("part i: ", part_i, "")
-    print("i: ", i, end = "    ")
-    print("x: ", pos_x)
-    print()
+import random
 
-# ans = 2^8
-# print(ans)
+def Random_audio():
+    for i in range(1,4):
+        keyword = f"audio/ReachTarget{i}.mp3"
+    return keyword
+
+audio_mass = [Random_audio()]
+random_choice = random.choice(audio_mass)
+print(random_choice)
+print(audio_mass)
+import pygame
+import time
+
+pygame.mixer.init()
+click_sound = pygame.mixer.Sound(str(random_choice))
+
+click_sound.play()
+
+
+click_sound.set_volume(0.5)
+
+
+time.sleep(10)
+pygame.mixer.music.stop()

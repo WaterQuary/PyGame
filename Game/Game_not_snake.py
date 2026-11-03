@@ -7,38 +7,24 @@ pg.mixer.init()
 
 class Player():
     def __init__(self, target):
-        self.isUp = self.isDown = self.isLeft = False
-        self.isRight = True
+        
         self.player_speed = 2.5
         self.radius = 40
-        self.player_image = pg.image.load("pictures/MainHero.png").convert_alpha()
+        self.player_image = pg.image.load("pictures/MainHero.png").convert_alpha()#Исправь баг с выключением всего звука пж, мне лень
         self.rect = self.player_image.get_rect()
         self.score = 0
         self.rect.center = (400, 300)
         self.target = target
-        self.click_sound = pg.mixer.Sound("audio/ReachTarget2.mp3")
-        self.click_sound.set_volume(0.5)
+        pg.mixer_music.set_volume(0.5)
         self.image = self.player_image.copy()
 
-    def directions(self, dir):
-        if dir == pg.K_UP:
-            self.isUp = self.isDown = self.isRight = self.isLeft = False
-            self.isUp = True
-        if dir == pg.K_DOWN:
-            self.isUp = self.isDown = self.isRight = self.isLeft = False
-            self.isDown = True
-        if dir == pg.K_RIGHT:
-            self.isUp = self.isDown = self.isRight = self.isLeft = False
-            self.isRight = True
-        if dir == pg.K_LEFT:
-            self.isUp = self.isDown = self.isRight = self.isLeft = False
-            self.isLeft = True
     def move(self):
         x, y = self.rect.center
-        if self.isUp == True: y -= self.player_speed
-        if self.isDown == True: y += self.player_speed
-        if self.isRight == True: x += self.player_speed
-        if self.isLeft == True: x -= self.player_speed
+        keys = pg.key.get_pressed()
+        if keys[pg.K_UP]: y -= self.player_speed
+        if keys[pg.K_DOWN]: y += self.player_speed
+        if keys[pg.K_RIGHT]: x += self.player_speed
+        if keys[pg.K_LEFT]: x -= self.player_speed
 
         if y < -30:
             y = 625
@@ -58,7 +44,6 @@ class Player():
 
         if distance < (self.radius + self.target.radius_target):
             self.reach_target()
-
     def spawn_player(self, screen):
         screen.blit(self.image, self.rect)
     def change_radius(self):
@@ -69,11 +54,20 @@ class Player():
         self.rect = self.image.get_rect()
         self.rect.center = old_center
 
+    def random_sound(self):
+        audio_mass = []
+        for i in range(1,4):
+            keyword = f"audio/ReachTarget{i}.mp3"
+            audio_mass += [keyword]
+        random_choice = random.choice(audio_mass)
+        return random_choice
+    
     def reach_target(self):
         self.target.respawn()
         self.score += 1
-        self.click_sound.stop()
-        self.click_sound.play()
+        pg.mixer_music.load(self.random_sound())
+        pg.mixer_music.stop()
+        pg.mixer_music.play()
         print(f"Очки: {self.score}")
         self.radius += 2
         self.change_radius()
@@ -115,7 +109,7 @@ class Game():
         self.game_screen = Screen()
         self.game_target = Target()
         self.game_player = Player(self.game_target)
-        self.audio = "audio/BackGround.mp3"
+        self.audio = "background_audio/BackGround.mp3"
     
         self.run = True
 
@@ -133,9 +127,6 @@ class Game():
         for e in pg.event.get():
             if e.type == pg.QUIT:
                 self.run = False
-            if e.type == pg.KEYDOWN:
-                dir = e.key
-                self.game_player.directions(dir)
         self.game_screen.play_screen.fill(self.game_screen.background_color)
         self.game_player.move()
         self.game_player.spawn_player(self.game_screen.play_screen)

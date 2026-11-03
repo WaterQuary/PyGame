@@ -32,7 +32,7 @@ class Screen():
         self.play_clock = pg.time.Clock()
         pg.display.set_caption("Главное меню")
         self.background_color = (30,30,40)
-        self.font = pg.font.SysFont(None, 36)
+        self.font = pg.font.SysFont("comicsansms", 36)
 
     def print_menu(self):
         greeting = self.font.render(f"Главное меню", True, (255, 255, 255))
