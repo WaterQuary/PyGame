@@ -74,8 +74,8 @@ class ShowGameMenuChoose():
                         self.run = False
             self.screen.play_screen.fill(self.screen.background_color)
             if self.isGame:
+                self.isGame = False
                 Game().start_game()
-                return
             else:
                 self.screen.print_menu()
             pg.display.flip()
