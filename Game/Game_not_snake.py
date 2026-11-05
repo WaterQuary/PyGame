@@ -110,23 +110,30 @@ class Game():
         self.game_target = Target()
         self.game_player = Player(self.game_target)
         self.audio = "background_audio/BackGround.mp3"
-    
+        self.return_to_menu = False
         self.run = True
 
     def start_game(self):
         self.background_music()
         while self.run:
             self.game()
+        pg.mixer.music.stop()
+        return self.return_to_menu 
 
     def background_music(self):
         pg.mixer.music.load(self.audio)
         pg.mixer.music.play(loops=-1)
         pg.mixer.music.set_volume(0.1)
+
     def game(self):
         self.game_screen.play_clock.tick(90)
         for e in pg.event.get():
             if e.type == pg.QUIT:
                 self.run = False
+            if e.type == pg.KEYDOWN and e.key == pg.K_ESCAPE:
+                self.return_to_menu = True
+                self.run = False
+                
         self.game_screen.play_screen.fill(self.game_screen.background_color)
         self.game_player.move()
         self.game_player.spawn_player(self.game_screen.play_screen)
