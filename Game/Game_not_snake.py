@@ -65,9 +65,7 @@ class Player():
     def reach_target(self):
         self.target.respawn()
         self.score += 1
-        pg.mixer_music.load(self.random_sound())
-        pg.mixer_music.stop()
-        pg.mixer_music.play()
+        pg.mixer.Sound(self.random_sound()).play()
         print(f"Очки: {self.score}")
         self.radius += 2
         self.change_radius()
