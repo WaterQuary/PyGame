@@ -31,6 +31,8 @@ class Screen():
         self.play_screen = pg.display.set_mode((self.width, self.height))
         self.play_clock = pg.time.Clock()
         pg.display.set_caption("Главное меню")
+        icon = pg.image.load("pictures/Iconka.jpg").convert_alpha()
+        pg.display.set_icon(icon)
         self.background_color = (30,30,40)
         self.font = pg.font.SysFont("comicsansms", 36)
 

@@ -15,6 +15,9 @@ class Player():
         self.score = 0
         self.rect.center = (400, 300)
         self.target = target
+        self.audio_mass = [f"audio/ReachTarget{i}.mp3" for i in range(1,4)]
+        for i in self.audio_mass:
+            pg.mixer_music.load(i)
         pg.mixer_music.set_volume(0.5)
         self.image = self.player_image.copy()
 
@@ -55,11 +58,7 @@ class Player():
         self.rect.center = old_center
 
     def random_sound(self):
-        audio_mass = []
-        for i in range(1,4):
-            keyword = f"audio/ReachTarget{i}.mp3"
-            audio_mass += [keyword]
-        random_choice = random.choice(audio_mass)
+        random_choice = random.choice(self.audio_mass)
         return random_choice
     
     def reach_target(self):
@@ -114,6 +113,7 @@ class Game():
     def start_game(self):
         self.background_music()
         while self.run:
+            
             self.game()
         pg.mixer.music.stop()
         return self.return_to_menu 
@@ -124,6 +124,7 @@ class Game():
         pg.mixer.music.set_volume(0.1)
 
     def game(self):
+
         self.game_screen.play_clock.tick(90)
         for e in pg.event.get():
             if e.type == pg.QUIT:

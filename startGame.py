@@ -29,6 +29,8 @@ class StartGame():
             return"Библиотека не найдена: " + libs
 
     def check_access(self):
+
+        
         if "False" in self.isInstalled_mass:
             return "непрошли"
         else:
